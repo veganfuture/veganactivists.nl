@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { SIGNAL_GROUP_URL } from "../../lib/metadata";
-import { CopyButton } from "../../components/CopyButton";
+import { Locale } from "@/lib/i18n";
+import { GroupInfo } from "@/lib/groups";
+import { GroupsAccordion, GroupsAccordionDict } from "@/components/GroupsAccordion";
 
 export type LandingDict = {
   siteTitle: string;
@@ -8,30 +8,27 @@ export type LandingDict = {
   heroTitleA: string;
   heroTitleB: string;
   heroBody: string;
-  joinCta: string;
-  copyLabel: string;
-  copySuccess: string;
   bullets1: string;
   bullets2: string;
   bullets3: string;
-  qrTitle: string;
-  qrBody: string;
   whyTitle: string;
   whyBody: string;
   admissionTitle: string;
   admissionBody: string;
   safetyTitle: string;
   safetyBody: string;
+  groupsHeading: string;
   footer: string;
+  groupAccordion: GroupsAccordionDict,
 };
 
 export type LandingProps = {
   dict: LandingDict;
-  current: "nl" | "en";
+  locale: Locale;
+  groups: GroupInfo[]
 };
 
-
-export function Landing({ dict, current }: LandingProps) {
+export function Landing({ dict, locale, groups }: LandingProps) {
   return (
     <main className="min-h-screen bg-gradient-to-b from-emerald-50 via-white to-emerald-50 text-zinc-900">
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
@@ -42,12 +39,13 @@ export function Landing({ dict, current }: LandingProps) {
             <p className="text-xs text-zinc-600">{dict.siteTag}</p>
           </div>
         </div>
+
         <details className="relative group">
           <summary
             className="list-none flex cursor-pointer items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-3 py-1.5 text-sm shadow-sm hover:border-zinc-400"
           >
             <span>
-              {current === "nl" ? "🇳🇱 Nederlands" : "🇬🇧 English"}
+              {locale === "nl" ? "🇳🇱 Nederlands" : "🇬🇧 English"}
             </span>
             <svg
               className="h-3 w-3 text-zinc-500 transition-transform duration-200 group-open:rotate-180"
@@ -73,46 +71,23 @@ export function Landing({ dict, current }: LandingProps) {
       </header>
 
       <section className="mx-auto max-w-6xl px-6 pt-6 pb-16 md:pb-24">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="mb-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-              {dict.heroTitleA} <span className="text-emerald-700">{dict.heroTitleB}</span>
-            </h2>
-            <p className="mb-6 max-w-xl text-lg text-zinc-700">{dict.heroBody}</p>
+        <h2 className="mb-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+          {dict.heroTitleA} <span className="text-emerald-700">{dict.heroTitleB}</span>
+        </h2>
+        <p className="mb-6 max-w-3xl text-lg text-zinc-700">{dict.heroBody}</p>
 
-            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <a
-                href={SIGNAL_GROUP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-base font-semibold text-white shadow-md transition hover:translate-y-[-1px] hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2"
-              >
-                {dict.joinCta}
-              </a>
-              <CopyButton text={SIGNAL_GROUP_URL} label={dict.copyLabel} success={dict.copySuccess} />
-            </div>
+        <h3 className="mb-2 text-sm font-semibold text-zinc-700">{dict.groupsHeading}</h3>
+        <GroupsAccordion
+          groups={groups}
+          locale={locale}
+          dict={dict.groupAccordion}
+        />
 
-            <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              <li>• {dict.bullets1}</li>
-              <li>• {dict.bullets2}</li>
-              <li>• {dict.bullets3}</li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="relative overflow-hidden rounded-3xl border border-emerald-100 bg-white/70 p-6 shadow-sm backdrop-blur">
-              <div className="mb-4">
-                <h3 className="text-lg font-semibold">{dict.qrTitle}</h3>
-                <p className="text-sm text-zinc-600">{dict.qrBody}</p>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="relative h-56 w-56">
-                  <Image src="/signal-qr.jpg" alt="Signal group QR" fill className="rounded-xl border border-zinc-200 object-contain" sizes="(max-width: 768px) 224px, 224px" priority />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ul className="mt-6 space-y-2 text-sm text-zinc-600">
+          <li>• {dict.bullets1}</li>
+          <li>• {dict.bullets2}</li>
+          <li>• {dict.bullets3}</li>
+        </ul>
       </section>
 
       <section className="border-y border-emerald-100 bg-white/60">
@@ -137,6 +112,5 @@ export function Landing({ dict, current }: LandingProps) {
           <p>{dict.footer}</p>
         </div>
       </footer>
-    </main>
-  );
+    </main>);
 }

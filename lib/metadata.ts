@@ -6,11 +6,13 @@ export function withBaseUrl(path: string): string {
   return `${BASE_URL}${path}`
 }
 
+const METADATA_DESCRIPTION = "The #1 vegan activists group in the Netherlands ✊"
+
 export const BASE_METADATA: Metadata = {
   metadataBase: new URL(BASE_URL),
   manifest: "/site.webmanifest",
   title: "Vegan Activists NL",
-  description: "The #1 vegan activists group for sharing, planning and organizing events in the Netherlands.",
+  description: METADATA_DESCRIPTION,
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -29,7 +31,7 @@ export const BASE_METADATA: Metadata = {
   },
   openGraph: {
     title: "Vegan Activists NL",
-    description: "The #1 vegan activists group for sharing, planning and organizing events in the Netherlands.",
+    description: METADATA_DESCRIPTION,
     url: BASE_URL,
     siteName: "Vegan Activists NL",
     images: [
@@ -46,10 +48,9 @@ export const BASE_METADATA: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vegan Activists NL",
-    description: "The #1 vegan activists group for sharing, planning and organizing events in the Netherlands.",
+    description: METADATA_DESCRIPTION,
     images: ["/web-app-manifest-512x512.png"],
   },
-  themeColor: "#ffffff",
 };
 
 export const SIGNAL_GROUP_URL =
