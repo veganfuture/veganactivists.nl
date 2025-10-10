@@ -1,7 +1,14 @@
 "use client";
 import { useState } from "react";
 
-export function CopyButton({ text, label, success }: { text: string; label: string; success: string }) {
+type CopyButtonProps =  { 
+  text: string; 
+  label: string; 
+  success: string 
+  className?: string;
+}
+
+export function CopyButton({ text, label, success, className }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   async function onCopy() {
     try {
@@ -13,7 +20,7 @@ export function CopyButton({ text, label, success }: { text: string; label: stri
   return (
     <button
       onClick={onCopy}
-      className="inline-flex items-center justify-center rounded-xl border border-zinc-300 bg-white px-5 py-3 text-base font-medium text-zinc-900 shadow-sm transition hover:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2"
+      className={className}
     >
       {copied ? success : label}
     </button>

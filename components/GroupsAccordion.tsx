@@ -79,15 +79,20 @@ export function GroupsAccordion({
                       href={g.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+                      className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 no-underline"
                     >
                       {dict.openInSignal}
                     </a>
-                    <CopyButton text={g.url} label={dict.copyLabel} success={dict.copySuccess} />
+                    <CopyButton 
+                      text={g.url} 
+                      label={dict.copyLabel} 
+                      success={dict.copySuccess} 
+                      className="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-900 shadow-sm transition hover:border-zinc-400  no-underline"
+                    />
                     <a
                       href={g.qrImage}
                       download
-                      className="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-900 shadow-sm transition hover:border-zinc-400"
+                      className="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-900 shadow-sm transition hover:border-zinc-400  no-underline"
                     >
                       {dict.downloadQr}
                     </a>
