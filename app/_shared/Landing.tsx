@@ -1,6 +1,7 @@
 import { Locale } from "@/lib/i18n";
 import { GroupInfo } from "@/lib/groups";
 import { GroupsAccordion, GroupsAccordionDict } from "@/components/GroupsAccordion";
+import Image from "next/image";
 
 export type LandingDict = {
   siteTitle: string;
@@ -33,7 +34,7 @@ export function Landing({ dict, locale, groups }: LandingProps) {
     <main className="min-h-screen bg-gradient-to-b from-emerald-50 via-white to-emerald-50 text-zinc-900">
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
         <div className="flex items-center gap-3">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600/10 text-2xl">🌱</span>
+          <span className="inline-flex "><Image src="/apple-touch-icon.png" width={52} height={52} alt={"Vegan Activists NL logo"} /></span>
           <div>
             <h1 className="text-lg font-semibold leading-tight">{dict.siteTitle}</h1>
             <p className="text-xs text-zinc-600">{dict.siteTag}</p>
