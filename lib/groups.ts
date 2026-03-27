@@ -1,6 +1,6 @@
 import { Locale } from "./i18n";
 
-export type GroupId = "events" | "chat" | "ams";
+export type GroupId = "intro" | "events" | "chat" | "ams";
 
 export type GroupInfo = {
   id:  GroupId;
@@ -11,6 +11,16 @@ export type GroupInfo = {
 }
 
 export const GROUPS: GroupInfo[] = [
+  {
+    id: "intro",
+    title: "Intro - Vegan Activists NL",
+    url: "https://signal.group/#CjQKIEccRwrDsYMpMuf0asj7FsPLQ2ya0U17ybH5dRn6aHeoEhBMxfl0llA0njdUUPvCb9eE",
+    qrImage: "/signal-qr-intro.png",
+    description: {
+      nl: "Start hier voor een introductie tot Vegan Activists NL.",
+      en: "Start here for an introduction to Vegan Activists NL.",
+    }
+  },
   {
     id: "chat",
     title: "Chat – Vegan Activists NL",
