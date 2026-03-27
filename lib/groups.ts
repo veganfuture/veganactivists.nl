@@ -3,12 +3,12 @@ import { Locale } from "./i18n";
 export type GroupId = "intro" | "events" | "chat" | "ams";
 
 export type GroupInfo = {
-  id:  GroupId;
-  title : string;
+  id: GroupId;
+  title: string;
   url: string;
   qrImage: string;
   description: Record<Locale, string>;
-}
+};
 
 export const GROUPS: GroupInfo[] = [
   {
@@ -19,7 +19,7 @@ export const GROUPS: GroupInfo[] = [
     description: {
       nl: "Start hier voor een introductie tot Vegan Activists NL.",
       en: "Start here for an introduction to Vegan Activists NL.",
-    }
+    },
   },
   {
     id: "chat",
@@ -29,7 +29,7 @@ export const GROUPS: GroupInfo[] = [
     description: {
       nl: "Bespreek dierenrechten met vegan activsten.",
       en: "Socialize with vegan activists about animal rights.",
-    }
+    },
   },
   {
     id: "events",
@@ -39,16 +39,16 @@ export const GROUPS: GroupInfo[] = [
     description: {
       nl: "Groep om dierenrechten events met elkaar te delen.",
       en: "Group for sharing events only.",
-    }
+    },
   },
   {
     id: "ams",
-    title: "Vegan Activists of Amsterdam",
+    title: "Amsterdam - Vegan Activists NL",
     url: "https://signal.group/#CjQKIEzDaFr7f_RyA6HTo4rIJedmuQNORizFwCoyroR3j4Y_EhBaqZpT8fpsCtHy2nZjGS4Z",
     qrImage: "/signal-qr-ams.jpg",
     description: {
       nl: "Groep voor activisten in de Amsterdam regio.",
       en: "Group for activists in the Amsterdam region.",
-    }
+    },
   },
 ];
